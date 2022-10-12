@@ -27,11 +27,9 @@ public class Main {
     //8-a, Список всех сотрудников вместе с id
 
     public static void allEmployees(Employee[] Employees) {
-        int id = 0;
         for (Employee employee : Employees) {
             if (employee == null) continue;
-            id++;
-            System.out.println(employee + " id: " + id);
+            System.out.println(employee);
         }
     }
 
