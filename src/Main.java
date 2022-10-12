@@ -1,118 +1,94 @@
 public class Main {
 
-
     public static void main(String[] args) {
 
-        Employee[] Employees = new Employee[10];
+        Employee[] employees = new Employee[10];
 
-        Employees [0] = new Employee("Петров Петр Петрович",1, 200_000);
-        Employees [1] = new Employee("Петров Иван Петрович",1, 150_000);
-        Employees [2] = new Employee("Иванов Петр Петрович",2, 160_000);
-        Employees [3] = new Employee("Иванов Петр Иванович",2, 170_000);
-        Employees [4] = new Employee("Сидоров Петр Петрович",3, 130_000);
-        Employees [5] = new Employee("Иваненко Петр Петрович",3, 180_000);
-        Employees [6] = new Employee("Петрунко Петр Петрович",4, 220_000);
-        Employees [7] = new Employee("Петрова Анна Ивановна",4, 90_000);
-        Employees [8] = new Employee("Сидоненко Петра Васильевна",5, 115_000);
-        Employees [9] = new Employee("Алиненко Тамара Игорьевна",5, 105_000);
+        employees [0] = new Employee("Петров Петр Петрович",1, 200_000);
+        employees [1] = new Employee("Петров Иван Петрович",1, 150_000);
+        employees [2] = new Employee("Иванов Петр Петрович",2, 160_000);
+        employees [3] = new Employee("Иванов Петр Иванович",2, 170_000);
+        employees [4] = new Employee("Сидоров Петр Петрович",3, 130_000);
+        employees [5] = new Employee("Иваненко Петр Петрович",3, 180_000);
+        employees [6] = new Employee("Петрунко Петр Петрович",4, 220_000);
+        employees [7] = new Employee("Петрова Анна Ивановна",4, 90_000);
+        employees [8] = new Employee("Сидоненко Петра Васильевна",5, 115_000);
+        employees [9] = new Employee("Алиненко Тамара Игорьевна",5, 105_000);
 
-        AllEmployees(Employees);
-        AllExpenses(Employees);
-        MinSalary(Employees);
-        EmplMin(Employees);
-        MaxSalary(Employees);
-        EmplMax(Employees);
-        AverageExpenses(Employees);
-        AllFullNameEmployees(Employees);
+        allEmployees(employees);
+        allExpenses(employees);
+        minSalary(employees);
+        maxSalary(employees);
+        averageExpenses(employees);
+        allFullNameEmployees(employees);
 
     }
 
-
     //8-a, Список всех сотрудников вместе с id
 
-    public static void AllEmployees(Employee[] Employees) {
+    public static void allEmployees(Employee[] Employees) {
         int id = 0;
         for (Employee employee : Employees) {
+            if (employee == null) continue;
             id++;
             System.out.println(employee + " id: " + id);
         }
     }
 
     //8-b, Сумма затрат на зарплаты в месяц
-    public static int AllExpenses(Employee[] Employees) {
+    public static int allExpenses(Employee[] Employees) {
         int sum = 0;
         for (Employee employee : Employees) {
-            sum = sum + employee.getSalary();
+            if (employee == null) continue;
+            sum +=  employee.getSalary();
         }
         System.out.println("Сумма затрат на зарплаты в месяц: "+sum);
         return sum;
     }
 
-
     //8-c,  Найти сотрудника с минимальной зарплатой
-    public static void  EmplMin(Employee[] Employees) {
-        String name = Employees [0].getFullName();
-        int minSal = Employees [0].getSalary();
-        for (Employee employee : Employees) {
-            if (employee != null) {
-                if (employee.getSalary() < minSal) {
-                    minSal = employee.getSalary();
-                    name = employee.getFullName();
-                }
-            }
-        }
-        System.out.println("Cотрудник с минимальной зарплатой: "+name);
-    }
-    public static void MinSalary(Employee[] Employees) {
-        int minSalary = 1_000_000;
+
+    public static void minSalary(Employee[] Employees) {
+        int minSalary = 1_000_000_000;
+        String name = null;
         int i = 0;
         while (i < Employees.length) {
             if (Employees [i].getSalary() <  minSalary) {
                 minSalary = Employees [i].getSalary();
+                name = Employees [i].getFullName();
             }
             i++;
         }
-        System.out.println("Минимальная зарплата: "+ minSalary);
+        System.out.println("Cотрудник с минимальной зарплатой: "+name+". "+"Минимальная зарплата: "+ minSalary);
     }
 
     //8-d,  Найти сотрудника с максимальной зарплатой
-    public static void EmplMax(Employee[] Employees) {
-        String name = Employees [0].getFullName();
-        int maxSal = Employees [0].getSalary();
-        for (Employee employee : Employees) {
-            if (employee != null) {
-                if (employee.getSalary() > maxSal) {
-                    maxSal = employee.getSalary();
-                    name = employee.getFullName();
-                }
-            }
-        }
-        System.out.println("Cотрудник с максимальной зарплатой: "+name);
-    }
-    public static void MaxSalary(Employee[] Employees) {
+
+    public static void maxSalary(Employee[] Employees) {
         int maxSalary = 1;
+        String name = null;
         int i = 0;
         while (i < Employees.length) {
             if (Employees [i].getSalary() >  maxSalary) {
                 maxSalary = Employees [i].getSalary();
+                name = Employees [i].getFullName();
             }
             i++;
         }
-        System.out.println("Максимальная зарплата: "+ maxSalary);
+        System.out.println("Cотрудник с максимальной зарплатой: "+name+". "+"Максимальная зарплата: "+ maxSalary);
     }
     //8-e, Среднее значение зарплат
-    public static void AverageExpenses(Employee[] Employees) {
+    public static void averageExpenses(Employee[] Employees) {
         int AllEmp = 10;
-        int AverageExp = AllExpenses(Employees)/AllEmp;
+        int AverageExp = allExpenses(Employees)/AllEmp;
         System.out.println("Среднее значение зарплат: "+AverageExp);
     }
     //8-f, Получить Ф. И. О. всех сотрудников
-    public static void AllFullNameEmployees(Employee[] Employees) {
+    public static void allFullNameEmployees(Employee[] Employees) {
         for (Employee employee : Employees) {
             System.out.println(employee.getFullName());
         }
     }
-
 }
 
 
