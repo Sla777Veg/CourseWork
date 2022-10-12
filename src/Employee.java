@@ -1,17 +1,19 @@
 public class Employee {
-    private String SNP;
+    private String FullName;
     private int department;
     private int salary;
-    //  private int id;
+    private int id;
 
-    public Employee (String SNP, int department, int salary) {
-        this.SNP= SNP;
+    public Employee (String FullName, int department, int salary) {
+        this.FullName= FullName;
         this.department = department;
         this.salary = salary;
+        this.id = id;
     }
 
-    public String getSNP() {
-        return SNP;
+
+    public String getFullName() {
+        return FullName;
     }
 
     public int getDepartment() {
@@ -32,6 +34,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return this.SNP +" "+this.department+" "+this.salary;
+        return this.FullName +" "+this.department+" "+this.salary;
     }
 }

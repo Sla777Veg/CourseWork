@@ -23,9 +23,11 @@ public class Main {
         MaxSalary(Employees);
         EmplMax(Employees);
         AverageExpenses(Employees);
-        AllSNPEmployees(Employees);
+        AllFullNameEmployees(Employees);
 
     }
+
+
     //8-a, Список всех сотрудников вместе с id
 
     public static void AllEmployees(Employee[] Employees) {
@@ -49,13 +51,13 @@ public class Main {
 
     //8-c,  Найти сотрудника с минимальной зарплатой
     public static void  EmplMin(Employee[] Employees) {
-        String name = Employees [0].getSNP();
+        String name = Employees [0].getFullName();
         int minSal = Employees [0].getSalary();
         for (Employee employee : Employees) {
             if (employee != null) {
                 if (employee.getSalary() < minSal) {
                     minSal = employee.getSalary();
-                    name = employee.getSNP();
+                    name = employee.getFullName();
                 }
             }
         }
@@ -75,13 +77,13 @@ public class Main {
 
     //8-d,  Найти сотрудника с максимальной зарплатой
     public static void EmplMax(Employee[] Employees) {
-        String name = Employees [0].getSNP();
+        String name = Employees [0].getFullName();
         int maxSal = Employees [0].getSalary();
         for (Employee employee : Employees) {
             if (employee != null) {
                 if (employee.getSalary() > maxSal) {
                     maxSal = employee.getSalary();
-                    name = employee.getSNP();
+                    name = employee.getFullName();
                 }
             }
         }
@@ -105,9 +107,9 @@ public class Main {
         System.out.println("Среднее значение зарплат: "+AverageExp);
     }
     //8-f, Получить Ф. И. О. всех сотрудников
-    public static void AllSNPEmployees(Employee[] Employees) {
+    public static void AllFullNameEmployees(Employee[] Employees) {
         for (Employee employee : Employees) {
-            System.out.println(employee.getSNP());
+            System.out.println(employee.getFullName());
         }
     }
 
