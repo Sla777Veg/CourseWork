@@ -22,6 +22,9 @@ public class Main {
         averageExpenses(employees);
         allFullNameEmployees(employees);
 
+        System.out.println("Сравнение:"+employees[5].equals(employees[7]));
+        System.out.println("Сравнение:"+employees[7].equals(employees[7]));
+
     }
 
     //8-a, Список всех сотрудников вместе с id
@@ -84,6 +87,7 @@ public class Main {
     //8-f, Получить Ф. И. О. всех сотрудников
     public static void allFullNameEmployees(Employee[] Employees) {
         for (Employee employee : Employees) {
+            if (employee == null) continue;
             System.out.println(employee.getFullName());
         }
     }
